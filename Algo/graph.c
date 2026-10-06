@@ -98,7 +98,6 @@ void bfs(graph* g, int size, int startVertice){
         if(!visited[q[start]]){
             visited[q[start]]=1;
             printf("%d", q[start]);
-            start++;
             temp= g->arr[q[start]];
             while(temp){
                 if(!visited[temp->val])
@@ -106,6 +105,7 @@ void bfs(graph* g, int size, int startVertice){
                 temp= temp->next;
             }
         }
+        start++;
     }
 }
 
