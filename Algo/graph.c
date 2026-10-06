@@ -87,6 +87,29 @@ void destroyEdge(graph * g, int src, int dest){
     }
 }
 
+void bfs(graph* g, int size, int startVertice){
+    int start=0, end=0;
+    int *visited, *q;
+    node *temp;
+    q = malloc(sizeof(int)*size*(size+1)/2);
+    visited= malloc(sizeof(int)*size);
+    q[end++]=  startVertice;
+    while(end>start){
+        if(!visited[q[start]]){
+            visited[q[start]]=1;
+            printf("%d", q[start]);
+            start++;
+            temp= g->arr[q[start]];
+            while(temp){
+                if(!visited[temp->val])
+                    q[end++]= temp->val;
+                temp= temp->next;
+            }
+        }
+    }
+
+}
+
 int main(){
     graph * g;
     int size;
@@ -101,8 +124,10 @@ int main(){
     addEdge(g, 3, 0);
     addEdge(g, 0, 4);
     printGraph(g);
-    printf("going in destroy\n");
-    destroyEdge(g, 0, 4);
-    destroyEdge(g, 3, 1);
-    printGraph(g);
+    // printf("going in destroy\n");
+    // destroyEdge(g, 0, 4);
+    // destroyEdge(g, 3, 1);
+    // printGraph(g);
+    
+    bfs(g, size, 0);
 }
