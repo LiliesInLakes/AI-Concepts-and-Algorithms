@@ -107,8 +107,35 @@ void bfs(graph* g, int size, int startVertice){
             }
         }
     }
-
 }
+
+void dfs(graph* g, int size, int startVertice){
+    int top=0;
+    int *visited, *q;
+    node *temp;
+    q = malloc(sizeof(int)*size*(size+1)/2);
+    visited= malloc(sizeof(int)*size);
+    q[top++]= startVertice;
+    while(top){
+        if(!visited[q[top-1]]){
+            top-=1;
+            printf("%d ", q[top]);
+            visited[q[top]]=1;
+            temp= g->arr[q[top]];
+            while(temp){
+                if(!visited[temp->val])
+                    q[top++]= temp->val;
+                temp= temp->next;
+            }
+        }
+        // else{
+        //     top-=1;
+        //     printf("%d ", q[top]);
+        // }
+    }
+    
+}
+
 
 int main(){
     graph * g;
@@ -128,6 +155,8 @@ int main(){
     // destroyEdge(g, 0, 4);
     // destroyEdge(g, 3, 1);
     // printGraph(g);
-    
+
     bfs(g, size, 0);
+    printf("\n");
+    dfs(g, size, 0);
 }
