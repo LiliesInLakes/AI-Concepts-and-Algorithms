@@ -118,7 +118,7 @@ void dfs(graph* g, int size, int startVertice){
     q[top++]= startVertice;
     while(top){
         top-=1;
-        if(!visited[q[top-1]]){
+        if(!visited[q[top]]){
             printf("%d ", q[top]);
             visited[q[top]]=1;
             temp= g->arr[q[top]];
