@@ -118,6 +118,7 @@ void dfs(graph* g, int size, int startVertice){
     q[top++]= startVertice;
     while(top){
         top-=1;
+        // printf("\ntop: %d ", top);
         if(!visited[q[top]]){
             printf("%d ", q[top]);
             visited[q[top]]=1;
@@ -128,6 +129,13 @@ void dfs(graph* g, int size, int startVertice){
                 temp= temp->next;
             }
         }
+        // int i;
+        // i=top-1;
+        // printf("\nq now:\n");
+        // while(i>-1){
+        //     printf("%d", q[i--]);
+        // }
+
         // else{
         //     top-=1;
         //     printf("%d ", q[top]);
@@ -146,17 +154,19 @@ int main(){
     g->arr= calloc(size, sizeof(node *));
     // printf("graph is initialised\n");
     addEdge(g, 1, 3);
-    addEdge(g, 2, 3);
-    addEdge(g, 4, 3);
-    addEdge(g, 3, 0);
-    addEdge(g, 0, 4);
+    addEdge(g, 1, 2);
+    addEdge(g, 4, 1);
+    addEdge(g, 1, 0);
+    addEdge(g, 0, 3);
     printGraph(g);
     // printf("going in destroy\n");
     // destroyEdge(g, 0, 4);
     // destroyEdge(g, 3, 1);
     // printGraph(g);
 
-    bfs(g, size, 0);
+    printf("bfs\n");
+    bfs(g, size, 1);
     printf("\n");
-    dfs(g, size, 0);
+     printf("dfs\n");
+    dfs(g, size, 1);
 }
